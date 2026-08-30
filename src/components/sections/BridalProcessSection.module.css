@@ -1,0 +1,136 @@
+.processSection {
+  background-color: var(--color-surface);
+  position: relative;
+  padding-block: var(--section-padding-y);
+  border-top: 1px solid rgba(250, 247, 242, 0.08);
+  border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+}
+
+.header {
+  max-width: 760px;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #F0EAE0;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #7A7066;
+  margin: 0;
+}
+
+/* ─── Process Columns ────────────────────────────────────────── */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.stepCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-elevated);
+  border: 1px solid rgba(250, 247, 242, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.stepCard:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.numberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-gold);
+  letter-spacing: -0.02em;
+}
+
+.timelineTag {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.7);
+  background: rgba(250, 247, 242, 0.05);
+  padding: 0.25rem 0.625rem;
+  border-radius: 0;
+  border: 1px solid rgba(250, 247, 242, 0.1);
+  white-space: nowrap;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-display-sm);
+  font-weight: 400;
+  color: #F0EAE0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2) 0;
+  line-height: 1.15;
+}
+
+.stepSubtitle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.stepDescription {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(250, 247, 242, 0.65);
+  margin: 0;
+}

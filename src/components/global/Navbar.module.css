@@ -1,0 +1,207 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-navbar);
+  /* Use padding-top for the safe-area notch; Safari handles this more reliably than adding to height */
+  padding-top: env(safe-area-inset-top, 0px);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  /* -webkit- prefix MUST come first for Safari's rendering engine */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  /* List -webkit- variant first in transition too */
+  -webkit-transition: background 0.3s ease, border-color 0.3s ease, -webkit-backdrop-filter 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, -webkit-backdrop-filter 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbarScrolled {
+  background: rgba(8, 8, 8, 0.98);
+  /* -webkit- prefix first for Safari */
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(240, 234, 224, 0.10);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+}
+
+.inner {
+  /* min-height so the bar is always 72px but can grow if content needs space */
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+/* 4. Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.logoWordmark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.logoSubtitle {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: rgba(250, 247, 242, 0.55);
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.logo:hover .logoWordmark {
+  color: var(--color-gold);
+}
+
+.logo:hover .logoSubtitle {
+  color: var(--color-ivory);
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 6. Desktop nav links */
+.navLink {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(250, 247, 242, 0.55);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-block: var(--space-1);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--color-ivory);
+}
+
+.navLinkActive {
+  color: var(--color-ivory);
+}
+
+.navLinkActive::before {
+  content: '•';
+  color: var(--color-gold);
+  margin-right: 6px;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* 5. "Book an Appointment" button */
+.cta {
+  flex-shrink: 0;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 1px solid var(--color-gold);
+  background: transparent;
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ctaButton:hover {
+  background: var(--color-gold);
+  color: var(--color-noir);
+  border-color: var(--color-gold);
+}
+
+/* 7. Hamburger on mobile (below 1024px) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 101;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background-color: var(--color-ivory);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.2s ease,
+    background-color 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburgerOpen .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburgerOpen .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburgerOpen .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 1023px) {
+  .nav,
+  .cta {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}

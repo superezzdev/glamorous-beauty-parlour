@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLAMOROUS — GLOBAL STYLES
+   Imports all partials. Sets global body, selection, scrollbar.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import './tokens.css';
+@import './reset.css';
+@import './typography.css';
+@import './layout.css';
+@import './animations.css';
+
+/* ─── Typography Smoothing & Feature Settings ─────────────────── */
+h1, h2, h3 {
+  font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-ivory);
+  background-color: var(--color-noir);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: rgba(250, 247, 242, 0.75);
+  background-color: var(--color-noir);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Global Link Transition ─────────────────────────────────── */
+a {
+  transition: color 0.2s ease;
+}
+
+/* ─── Mobile Touch Improvements ─────────────────────────────── */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent text resize on rotate in iOS */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+
+/* ─── Text Selection ─────────────────────────────────────────── */
+::selection {
+  background-color: #C9A96E;
+  color: #080808;
+}
+
+/* ─── Focus Ring (Accessibility) ─────────────────────────────── */
+:focus-visible {
+  outline: 1px solid #C9A96E;
+  outline-offset: 3px;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A96E;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light);
+}
+
+/* ─── Main Content Area ──────────────────────────────────────── */
+main {
+  min-height: 100dvh;
+}
+
+/* ─── No JS Fallback: show hidden elements ───────────────────── */
+.no-js [data-reveal],
+.no-js [data-stagger] > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Lenis Smooth Scroll Rules ──────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+

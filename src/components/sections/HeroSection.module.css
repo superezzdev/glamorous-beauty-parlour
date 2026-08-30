@@ -1,0 +1,779 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLAMOROUS — HERO SECTION STYLES
+   Art-directed unique visual treatments for each page.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Unified Top-Left Location Badge (Single Instance) ──────── */
+.badgeTopLeft {
+  position: absolute;
+  top: calc(72px + env(safe-area-inset-top, 0px) + var(--space-6));
+  left: clamp(1.5rem, 5vw, 5rem);
+  z-index: 20;
+  pointer-events: none;
+  animation: fadeSlideUp var(--duration-slow) var(--ease-out) 300ms both;
+}
+
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-muted, #B5ADA2);
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 0;
+  border: 1px solid rgba(240, 234, 224, 0.22);
+}
+
+.locationBadge::before {
+  content: '•';
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. HOME HERO (50/50 Split + Absolute Right Image + Gold Line)
+   ═══════════════════════════════════════════════════════════════ */
+.heroHome {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--color-noir);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Right Image Panel: position absolute, right: 0, top: 0, width: 50%, height: 100% */
+.homeMediaRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  clip-path: inset(100% 0 0 0);
+}
+
+.homeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(106%) brightness(102%);
+  animation: heroSubtleScale 18s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+.homeMediaOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 8, 8, 0.88) 0%,
+    rgba(8, 8, 8, 0.25) 25%,
+    transparent 65%,
+    rgba(8, 8, 8, 0.35) 100%
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.25) 0%,
+    transparent 35%,
+    rgba(8, 8, 8, 0.60) 100%
+  );
+}
+
+/* Subtle Gold Vertical Line: 1px, 120px, bg-gold between left & right panels */
+.homeGoldDivider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--color-gold) 20%,
+    var(--color-gold) 80%,
+    transparent 100%
+  );
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.homeContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+/* Left Content: justify-content: flex-end (align to bottom-left) */
+.homeLeftContent {
+  width: 50%;
+  max-width: 50%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding-top: calc(72px + var(--space-12));
+  padding-bottom: clamp(3.5rem, 6vw, 6.5rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. SERVICES HERO (Atmospheric Luxury Background + Centered Editorial)
+   ═══════════════════════════════════════════════════════════════ */
+.heroServices {
+  position: relative;
+  background: var(--color-noir);
+  min-height: clamp(520px, 75vh, 840px);
+  padding-top: calc(72px + env(safe-area-inset-top, 0px) + clamp(2rem, 5vw, 3rem));
+  padding-bottom: clamp(3rem, 8vw, 7rem);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicesMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.servicesImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(106%) brightness(102%);
+  animation: heroSubtleScale 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+.servicesOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.40) 0%,
+    rgba(8, 8, 8, 0.15) 25%,
+    rgba(8, 8, 8, 0.45) 60%,
+    rgba(8, 8, 8, 0.92) 100%
+  ),
+  radial-gradient(
+    ellipse at center,
+    rgba(8, 8, 8, 0.15) 0%,
+    rgba(8, 8, 8, 0.65) 100%
+  );
+}
+
+.servicesContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.servicesContent {
+  max-width: 860px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicesLabelWrapper {
+  margin-bottom: var(--space-4);
+}
+
+.servicesHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Thin horizontal line: 1px, bg-ghost, width 60px, mx-auto */
+.servicesGhostLine {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: var(--space-6) auto;
+  border-radius: 0;
+}
+
+.servicesSubheadline {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(250, 247, 242, 0.90);
+  max-width: 680px;
+  margin: 0 auto var(--space-8) auto;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+.servicesActionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. GALLERY HERO (Image-First, Full Viewport, Bottom Pin)
+   ═══════════════════════════════════════════════════════════════ */
+.heroGallery {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--color-noir);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.galleryMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  animation: heroSubtleScale 20s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+/* Black gradient overlay: transparent 40% to rgba(8,8,8,0.95) 100% */
+.galleryOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.25) 0%,
+    transparent 35%,
+    rgba(8, 8, 8, 0.60) 65%,
+    rgba(8, 8, 8, 0.95) 100%
+  );
+}
+
+/* Headline text sitting at the bottom: bottom 60px, left 60px */
+.galleryBottomContent {
+  position: absolute;
+  bottom: clamp(2rem, 5vw, 60px);
+  left: clamp(1.5rem, 5vw, 60px);
+  right: clamp(1.5rem, 5vw, 60px);
+  max-width: 960px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  text-align: left;
+}
+
+.galleryLabel {
+  margin-bottom: var(--space-1);
+}
+
+.galleryHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8.5vw, 6.5rem);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.gallerySubheadline {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(250, 247, 242, 0.90);
+  max-width: 60ch;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. ABOUT HERO (Portrait-Split: 40% Left Text + 60% Right Portrait)
+   ═══════════════════════════════════════════════════════════════ */
+.heroAbout {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--color-noir);
+  padding-top: calc(72px + env(safe-area-inset-top, 0px) + var(--space-12));
+  padding-bottom: var(--space-16);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.aboutContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.aboutSplitGrid {
+  display: grid;
+  grid-template-columns: 42fr 58fr;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+/* 40% Left Text Column: Vertically Centered */
+.aboutLeftText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-5);
+  position: relative;
+  z-index: 5;
+}
+
+.aboutLabelWrapper {
+  margin-bottom: var(--space-2);
+}
+
+/* Sabreen's name in huge Cormorant 300 6rem */
+.aboutHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.aboutSubheadline {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(250, 247, 242, 0.85);
+  max-width: 44ch;
+  margin: 0;
+}
+
+/* 60% Right Portrait Column with Grayscale + Sepia CSS Filter */
+.aboutRightMedia {
+  position: relative;
+  z-index: 1;
+  /* Negative margin overlap slightly over left panel */
+  margin-left: -3rem;
+}
+
+.aboutImageFrame {
+  position: relative;
+  width: 100%;
+  height: clamp(480px, 70vh, 760px);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(250, 247, 242, 0.10);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.60);
+}
+
+.aboutPortraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: contrast(106%) brightness(102%);
+  transition: transform var(--duration-slow) var(--ease-standard), filter var(--duration-slow) var(--ease-standard);
+}
+
+.aboutImageFrame:hover .aboutPortraitImage {
+  transform: scale(1.03);
+}
+
+.aboutImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 8, 8, 0.40) 0%,
+    rgba(8, 8, 8, 0.05) 30%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. CONTACT HERO (Text-Only, Short py-20, Animated Underline)
+   ═══════════════════════════════════════════════════════════════ */
+.heroContact {
+  position: relative;
+  background: var(--color-noir);
+  padding-top: calc(72px + env(safe-area-inset-top, 0px) + clamp(3rem, 8vw, 4rem));
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+}
+
+.contactContainer {
+  position: relative;
+  z-index: 2;
+}
+
+.contactContent {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.contactLabelWrapper {
+  margin-bottom: var(--space-2);
+}
+
+.contactHeadline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 8vw, 5.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.contactSubheadline {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(250, 247, 242, 0.85);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. BRIDAL HERO (Cinematic Luxury Bridal Treatment)
+   ═══════════════════════════════════════════════════════════════ */
+.heroBridal {
+  position: relative;
+  min-height: 90dvh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-top: calc(72px + env(safe-area-inset-top, 0px) + var(--space-12));
+  background: var(--color-noir);
+}
+
+.bridalMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bridalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(106%) brightness(102%);
+  animation: heroSubtleScale 18s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+.bridalOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.30) 0%,
+    rgba(8, 8, 8, 0.10) 30%,
+    rgba(8, 8, 8, 0.50) 65%,
+    rgba(8, 8, 8, 0.92) 100%
+  );
+}
+
+.bridalContent {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(3.5rem, 6vw, 6.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 960px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Shared Elements (Typography, CTAs, Keyframes)
+   ═══════════════════════════════════════════════════════════════ */
+.headline {
+  font-family: 'Cormorant Garamond', var(--font-cormorant), var(--font-display), Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 9vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory);
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.headline span,
+.servicesHeadline span,
+.galleryHeadline span,
+.aboutHeadline span,
+.contactHeadline span {
+  display: block;
+  color: var(--color-ivory);
+}
+
+.headline span:global(.text-gold),
+.headline :global(.text-gold),
+.servicesHeadline :global(.text-gold),
+.galleryHeadline :global(.text-gold),
+.aboutHeadline :global(.text-gold),
+.contactHeadline :global(.text-gold) {
+  color: var(--color-gold) !important;
+}
+
+.headline span:global(.italic),
+.headline :global(.italic),
+.servicesHeadline :global(.italic),
+.galleryHeadline :global(.italic),
+.aboutHeadline :global(.italic),
+.contactHeadline :global(.italic) {
+  font-style: italic !important;
+}
+
+.headline span:global(.font-light),
+.headline :global(.font-light),
+.servicesHeadline :global(.font-light),
+.galleryHeadline :global(.font-light),
+.aboutHeadline :global(.font-light),
+.contactHeadline :global(.font-light) {
+  font-weight: 300 !important;
+}
+
+.subheadline {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: rgba(250, 247, 242, 0.90);
+  line-height: 1.60;
+  max-width: 50ch;
+  margin: 0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
+}
+
+/* Action Group */
+.actionGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+/* Scroll indicator */
+.scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.scrollLine {
+  width: 32px;
+  height: 1px;
+  background: rgba(250, 247, 242, 0.55);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; width: 24px; }
+  50% { opacity: 1; width: 44px; }
+}
+
+.scrollText {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: var(--label-weight);
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.75);
+}
+
+@keyframes heroSubtleScale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive Breakpoints
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* Home Tablet */
+  .homeMediaRight {
+    width: 100%;
+    opacity: 0.35;
+  }
+  .homeGoldDivider {
+    display: none;
+  }
+  .homeLeftContent {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  /* About Tablet */
+  .aboutSplitGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .aboutRightMedia {
+    margin-left: 0;
+  }
+  .aboutImageFrame {
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Home Mobile (< 768px): Full-bleed immersive photo hero with bottom-pinned content */
+  .heroHome {
+    flex-direction: column;
+    min-height: 100dvh;
+    min-height: 100svh;
+    height: auto;
+    position: relative;
+    justify-content: flex-end;
+    align-items: stretch;
+  }
+
+  .homeMediaRight {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .homeImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .homeMediaOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 8, 8, 0.40) 0%,
+      rgba(8, 8, 8, 0.15) 25%,
+      rgba(8, 8, 8, 0.65) 55%,
+      rgba(8, 8, 8, 0.94) 85%,
+      rgba(8, 8, 8, 0.98) 100%
+    );
+  }
+
+  .homeGoldDivider {
+    display: none;
+  }
+
+  .homeContainer {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100dvh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: calc(72px + env(safe-area-inset-top, 0px) + var(--space-6));
+    padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .homeLeftContent {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    justify-content: flex-end;
+    gap: var(--space-4);
+  }
+
+  .badgeTopLeft {
+    display: none; /* Hide on mobile to eliminate overlap collision with sticky navbar on scroll */
+  }
+
+  .actionGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actionGroup > * {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .scroll {
+    display: none;
+  }
+
+  .galleryBottomContent {
+    bottom: clamp(1.5rem, 4vw, 2.5rem);
+    left: clamp(1rem, 4vw, 1.5rem);
+    right: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  /* About Mobile */
+  .aboutSplitGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .aboutRightMedia {
+    margin-left: 0;
+  }
+  .aboutImageFrame {
+    height: 360px;
+  }
+}

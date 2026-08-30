@@ -1,0 +1,354 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLAMOROUS — MAKEUP CLASSES TEASER
+   Luxury dark noir & gold editorial academy showcase.
+   ═══════════════════════════════════════════════════════════════ */
+
+.section {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-noir, #080808);
+  border-top: 1px solid var(--color-border, rgba(250, 247, 242, 0.08));
+  position: relative;
+}
+
+/* ── Section Header (Editorial Split) ── */
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+  align-items: flex-end;
+}
+
+@media (min-width: 900px) {
+  .header {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-12);
+  }
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  margin: var(--space-2) 0 0;
+  line-height: 1.08;
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  font-weight: 300;
+  color: var(--color-espresso);
+}
+
+.headingHighlight {
+  color: var(--color-gold);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.leadText {
+  color: var(--color-coffee);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.whatsappLink {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-taupe);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.whatsappLink:hover {
+  color: var(--color-gold);
+}
+
+/* ── Course Cards Grid ── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+@media (min-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Individual Card ── */
+.card {
+  position: relative;
+  background: var(--color-surface, #0f0f0f);
+  border: 1px solid var(--color-border, rgba(250, 247, 242, 0.08));
+  padding: 2.25rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-sm, 4px);
+  transition: transform var(--transition-base), border-color var(--transition-base), background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 106, 0.35);
+  background: #141414;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Featured / Popular Card Highlight */
+.cardPopular {
+  border-color: rgba(201, 168, 106, 0.35);
+  background: #12100d;
+}
+
+.cardPopular:hover {
+  border-color: var(--color-gold);
+  background: #171410;
+}
+
+/* Popular Ribbon */
+.popularRibbon {
+  position: absolute;
+  top: -1px;
+  left: 2rem;
+  background: var(--color-gold);
+  color: #080808;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 2px 8px rgba(201, 168, 106, 0.3);
+}
+
+/* Top Meta Row (Number + Level Badge) */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.cardNumber {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  color: rgba(250, 247, 242, 0.4);
+}
+
+/* ── Harmonious Level Badges (Zero Clashing Neons) ── */
+.levelBadge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+}
+
+.levelBeginner {
+  background: rgba(250, 247, 242, 0.06);
+  color: var(--color-ivory);
+  border: 1px solid rgba(250, 247, 242, 0.15);
+}
+
+.levelIntermediate {
+  background: rgba(201, 168, 106, 0.12);
+  color: var(--color-gold);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.levelAdvanced {
+  background: rgba(196, 137, 122, 0.12);
+  color: var(--color-rose);
+  border: 1px solid rgba(196, 137, 122, 0.35);
+}
+
+/* ── Card Titles & Subtitles ── */
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  margin: 0 0 var(--space-2);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.cardSubtitle {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-taupe);
+  margin: 0 0 var(--space-5);
+  line-height: 1.5;
+}
+
+/* ── Highlights Bullet List ── */
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-grow: 1;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: rgba(250, 247, 242, 0.75);
+  line-height: 1.5;
+}
+
+.highlightDot {
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transform: translateY(-2px);
+}
+
+.highlightText {
+  flex-grow: 1;
+}
+
+/* ── Card Footer (Price, Duration & Arrow) ── */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border, rgba(250, 247, 242, 0.08));
+  margin-top: auto;
+}
+
+.priceBlock,
+.durationBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.priceLabel,
+.durationLabel {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.18em;
+  color: rgba(250, 247, 242, 0.35);
+  text-transform: uppercase;
+}
+
+.cardPrice {
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 0.04em;
+}
+
+.cardDuration {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-coffee);
+  letter-spacing: 0.04em;
+}
+
+.cardArrow {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: rgba(250, 247, 242, 0.35);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover .cardArrow {
+  color: var(--color-gold);
+  transform: translateX(4px);
+}
+
+/* ── Bottom Academy Meta Bar ── */
+.bottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface, #0f0f0f);
+  border: 1px solid var(--color-border, rgba(250, 247, 242, 0.08));
+  border-radius: var(--radius-sm, 4px);
+}
+
+.metaBadges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.metaPill {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-taupe);
+}
+
+.metaDivider {
+  color: rgba(250, 247, 242, 0.2);
+}
+
+.exploreLink {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.exploreLink:hover {
+  gap: var(--space-3);
+  color: var(--color-petal);
+}

@@ -1,0 +1,678 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLAMOROUS — MAKEUP CLASSES & ACADEMY SECTION
+   Luxury dark noir, gold highlights, and typography system.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Common Section Spacing ── */
+.academyBlock {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-noir);
+  position: relative;
+}
+
+.academyBlockSurface {
+  padding: var(--section-padding-y) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-10);
+  max-width: 780px;
+}
+
+.sectionHeaderCentered {
+  text-align: center;
+  margin: 0 auto var(--space-12);
+  max-width: 760px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--text-display-md);
+  font-weight: 300;
+  color: var(--color-ivory);
+  line-height: 1.1;
+  margin: var(--space-2) 0 var(--space-4);
+  letter-spacing: -0.01em;
+}
+
+.headingHighlight {
+  color: var(--color-gold);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.leadText {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-coffee);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── 1. ACADEMY PILLARS / HIGHLIGHTS ── */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pillarCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+}
+
+.pillarCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 168, 106, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.pillarTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pillarNumber {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.pillarBadge {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-taupe);
+  background: rgba(250, 247, 242, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+}
+
+.pillarTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.pillarDesc {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  color: var(--color-taupe);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── 2. COURSES GRID & LUXURY CARDS ── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 106, 0.4);
+  background: #141414;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+.cardPopular {
+  border-color: rgba(201, 168, 106, 0.4);
+  background: #12100d;
+}
+
+.cardPopular:hover {
+  border-color: var(--color-gold);
+  background: #181410;
+}
+
+.popularRibbon {
+  position: absolute;
+  top: -1px;
+  left: 1.75rem;
+  background: var(--color-gold);
+  color: #080808;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 2px 8px rgba(201, 168, 106, 0.35);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.cardNumber {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: rgba(250, 247, 242, 0.35);
+}
+
+.levelBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+
+.levelBeginner {
+  background: rgba(250, 247, 242, 0.06);
+  color: var(--color-ivory);
+  border: 1px solid rgba(250, 247, 242, 0.15);
+}
+
+.levelIntermediate {
+  background: rgba(201, 168, 106, 0.12);
+  color: var(--color-gold);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.levelAdvanced {
+  background: rgba(196, 137, 122, 0.12);
+  color: var(--color-rose);
+  border: 1px solid rgba(196, 137, 122, 0.35);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  margin: 0 0 var(--space-1);
+  line-height: 1.2;
+}
+
+.cardSubtitle {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-taupe);
+  margin: 0 0 var(--space-3);
+  line-height: 1.45;
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-coffee);
+  line-height: 1.65;
+  margin: 0 0 var(--space-5);
+}
+
+/* Price & Timing Box */
+.cardMetaBox {
+  background: rgba(250, 247, 242, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardPriceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.cardPrice {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  letter-spacing: 0.03em;
+}
+
+.durationBadge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ivory);
+  background: rgba(201, 168, 106, 0.1);
+  border: 1px solid rgba(201, 168, 106, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+}
+
+.cardTiming {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-taupe);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cardPriceNote {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: rgba(250, 247, 242, 0.45);
+  letter-spacing: 0.04em;
+}
+
+/* Includes / Syllabus List */
+.includesList {
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
+}
+
+.includesHeading {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-taupe);
+  margin-bottom: var(--space-3);
+}
+
+.includesList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.includeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: rgba(250, 247, 242, 0.8);
+  line-height: 1.5;
+}
+
+.includeDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-top: 0.55em;
+  flex-shrink: 0;
+}
+
+/* Outcome Highlight Callout */
+.outcomeBox {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  background: rgba(201, 168, 106, 0.06);
+  border-left: 2px solid var(--color-gold);
+  padding: 0.85rem 1rem;
+  margin-bottom: var(--space-5);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.outcomeStar {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.outcomeText {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--color-coffee);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Direct WhatsApp CTA Button */
+.cardCta {
+  width: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+}
+
+/* ── 3. LEARNING ROADMAP ── */
+.roadmapGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .roadmapGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .roadmapGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.roadmapCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.roadmapCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 168, 106, 0.35);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.stepTag {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-taupe);
+  background: rgba(250, 247, 242, 0.05);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  line-height: 1.25;
+  margin: 0 0 var(--space-2);
+}
+
+.stepDesc {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  color: var(--color-coffee);
+  line-height: 1.65;
+  margin: 0 0 var(--space-4);
+  flex-grow: 1;
+}
+
+.stepChips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stepChip {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-taupe);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.chipDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* ── 4. STUDENT PERKS ── */
+.perksGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .perksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .perksGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.perkCard {
+  background: var(--color-noir);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.perkCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 168, 106, 0.3);
+}
+
+.perkTag {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  width: fit-content;
+}
+
+.perkTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.perkDesc {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-taupe);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── 5. INTERACTIVE FAQ ── */
+.faqInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 900px) {
+  .faqInner {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+}
+
+.faqLeft {
+  position: sticky;
+  top: 6rem;
+}
+
+.faqHeading {
+  font-family: var(--font-display);
+  font-size: var(--text-display-sm);
+  font-weight: 300;
+  color: var(--color-ivory);
+  margin: var(--space-2) 0 var(--space-4);
+  line-height: 1.15;
+}
+
+.faqSubtext {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-coffee);
+  line-height: 1.65;
+  margin: 0 0 var(--space-6);
+}
+
+.faqWaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #25d366;
+  text-decoration: none;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.faqWaBtn:hover {
+  background: rgba(37, 211, 102, 0.16);
+  border-color: rgba(37, 211, 102, 0.45);
+}
+
+.faqRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faqItem:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 1.35rem 0;
+  background: none;
+  border: none;
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.faqQuestion:hover {
+  color: var(--color-gold);
+}
+
+.faqIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.faqIconOpen {
+  transform: rotate(45deg);
+}
+
+.faqAnswer {
+  padding: 0 0 1.35rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-coffee);
+  line-height: 1.75;
+}

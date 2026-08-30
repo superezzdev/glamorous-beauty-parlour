@@ -1,0 +1,472 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLAMOROUS — MOBILE MENU (HAUTE LUXURY EDITORIAL NOIR)
+   A bespoke, luxury mobile navigation experience for the dark aesthetic.
+   ═══════════════════════════════════════════════════════════════ */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-mobile-menu, 200);
+  background-color: #080808;
+  background-image: 
+    radial-gradient(ellipse 70% 40% at 85% 10%, rgba(201, 168, 106, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 15% 85%, rgba(196, 137, 122, 0.05) 0%, transparent 65%);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (min-width: 1024px) {
+  .drawer {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ─── Editorial Ghost Watermark ──────────────────────────────── */
+.watermark {
+  position: absolute;
+  right: -5%;
+  bottom: 12%;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 15vw, 7.5rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: rgba(250, 247, 242, 0.025);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  transform: rotate(-7deg);
+  z-index: 0;
+}
+
+/* ─── Container ──────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-6) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Header: Brand Wordmark & Close Button ──────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.open .header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 80ms;
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brandLink {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  line-height: 1.1;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.brandLink:hover .wordmark {
+  color: var(--color-gold);
+}
+
+.tagline {
+  font-family: var(--font-label);
+  font-size: 0.5625rem;
+  font-weight: var(--label-weight);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+  line-height: 1;
+}
+
+.closeBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid rgba(250, 247, 242, 0.15);
+  background: rgba(22, 22, 22, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ivory);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-editorial);
+}
+
+.closeBtn:hover,
+.closeBtn:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: rgba(201, 168, 106, 0.15);
+  transform: rotate(90deg);
+}
+
+.closeBtn:active {
+  transform: scale(0.92) rotate(90deg);
+}
+
+/* ─── Navigation ─────────────────────────────────────────────── */
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(var(--space-4), 3.5vh, var(--space-8));
+  min-height: min-content;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-1), 1.6vh, var(--space-3));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.open .navItem {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(140ms + var(--stagger-idx, 0) * 65ms);
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  text-decoration: none;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.linkLeft {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.linkIndex {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-rose);
+  opacity: 0.85;
+  width: 24px;
+  flex-shrink: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.linkLabel {
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 5.8vh, 2.85rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-ivory);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activeDot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-left: 2px;
+  transform: translateY(-2px);
+}
+
+.linkArrow {
+  color: var(--color-gold);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.3s var(--ease-out),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover & Active States */
+.navLink:hover,
+.navLink:focus-visible {
+  transform: translateX(8px);
+}
+
+.navLink:hover .linkIndex,
+.navLink:focus-visible .linkIndex {
+  color: var(--color-gold);
+  opacity: 1;
+}
+
+.navLink:hover .linkLabel,
+.navLink:focus-visible .linkLabel {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+.navLink:hover .linkArrow,
+.navLink:focus-visible .linkArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navLinkActive .linkLabel {
+  color: var(--color-gold);
+  font-weight: 400;
+}
+
+/* ─── Footer: CTA & Studio Metadata ──────────────────────────── */
+.footer {
+  flex-shrink: 0;
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-top: 1px solid rgba(250, 247, 242, 0.08);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.open .footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 480ms;
+}
+
+/* Luxury Booking CTA */
+.ctaWrapper {
+  width: 100%;
+}
+
+.ctaButton {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background-color: transparent;
+  color: var(--color-gold);
+  border-radius: 0;
+  text-decoration: none;
+  border: 1px solid var(--color-gold);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ctaText {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  transition: color 0.3s ease;
+}
+
+.ctaIcon {
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out), color 0.3s ease;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+  background-color: var(--color-gold);
+  color: #080808;
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.ctaButton:hover .ctaText,
+.ctaButton:focus-visible .ctaText,
+.ctaButton:hover .ctaIcon,
+.ctaButton:focus-visible .ctaIcon {
+  color: #080808;
+  transform: translateX(4px);
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+/* Bottom Metadata & Contact */
+.bottomMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.metaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-coffee);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.metaIcon {
+  color: var(--color-rose);
+  flex-shrink: 0;
+}
+
+.metaLink:hover {
+  color: var(--color-gold);
+}
+
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  color: var(--color-taupe);
+  letter-spacing: 0.04em;
+}
+
+.locationDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-rose);
+  flex-shrink: 0;
+}
+
+/* ─── Compact / Small-Height Viewport Adaptation ─────────────── */
+@media (max-height: 680px) {
+  .container {
+    padding: var(--space-4);
+  }
+
+  .nav {
+    padding-block: var(--space-2);
+  }
+
+  .navList {
+    gap: var(--space-1);
+  }
+
+  .linkLabel {
+    font-size: 1.75rem;
+  }
+
+  .linkIndex {
+    font-size: 0.6875rem;
+  }
+
+  .ctaButton {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .watermark {
+    display: none;
+  }
+}
+
+/* ─── Accessibility: Reduced Motion ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .header,
+  .navItem,
+  .footer,
+  .navLink,
+  .closeBtn,
+  .ctaButton {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+}
